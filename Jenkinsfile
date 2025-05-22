@@ -9,6 +9,22 @@ pipeline {
             sh "./mvnw install"
         }
     }
+
+    stage("Run unit-test"){
+        steps {
+            sh "./mvnw test"
+        }
+    }
+    
+    stage("CodeScanning"){
+       environment {
+           SONAR-HOME = tool name: 'sonar-scan'
+       }
+       steps {
+        sh "${SONAR_HOME}/bin/sonar-scanner --version"
+       }
+    }
+    
   }
 
 }
