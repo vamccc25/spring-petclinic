@@ -15,14 +15,19 @@ pipeline {
             sh "./mvnw test"
         }
     }
-    
+
     stage("CodeScanning"){
-       environment {
+        environment {
            SONAR-HOME = tool name: 'sonar-scan'
+        }
+        steps {
+           withsonarQubeEnv('sonar qube') {
+
+                sh "${SONAR_HOME}/bin/sonar-scanner"
+           }
+        
        }
-       steps {
-        sh "${SONAR_HOME}/bin/sonar-scanner --version"
-       }
+
     }
     
   }
