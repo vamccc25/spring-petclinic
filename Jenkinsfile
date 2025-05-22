@@ -4,9 +4,10 @@ pipeline {
 
   stages { 
 
-    stage("Build")
-        steps{
+    stage("Build"){
+        steps {
             sh "./mvnw install"
+        }
     }
   }
 
