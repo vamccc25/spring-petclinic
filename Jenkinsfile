@@ -2,11 +2,11 @@ pipeline {
      
   agent any 
 
-  stages {
+  stages { 
 
-    stage("build")
-    steps{
-        sh "./mvnw install"
+    stage("Build")
+        steps{
+            sh "./mvnw install"
     }
   }
 
