@@ -18,12 +18,13 @@ pipeline {
 
     stage("CodeScanning"){
         environment {
-           SONAR-HOME = tool name: 'sonar-scan'
+           SONAR_HOME = tool name: 'sonar-scan'
         }
         steps {
-           withsonarqubeEnv('sonar qube') {
 
-                sh "${SONAR_HOME}/bin/sonar-scanner"
+           withsonarqubeEnv('sonar-qube') {
+
+                sh '''$SONAR_HOME/bin/sonar-scanner'''
            }
         
        }
