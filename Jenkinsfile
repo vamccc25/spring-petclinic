@@ -23,7 +23,16 @@ pipeline {
         steps {    
 
            withSonarQubeEnv('sonar-qube') {
-                sh '''$SONAR_HOME/bin/sonar-scanner'''
+                sh '''$SONAR_HOME/bin/sonar-scanner \
+                       -Dsonar.projectKey=myPETC \
+                       -Dsonar.projectName=mypetclinc \
+                       -Dsonar.sources=. \
+                       -Dsonar.java.binaries=target/classes \
+                       -Dsonar.exclusions=src/test/java/****/*.java \
+                       -Dsonar.analysis.mode=publish \
+                       -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}
+                
+                '''
             }
        }
 
