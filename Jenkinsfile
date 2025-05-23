@@ -22,6 +22,18 @@ pipeline {
         }
         steps {    
 
+           // Install Node.js only if not already installed
+            sh '''
+            if ! command -v node >/dev/null 2>&1; then
+                echo "Node.js not found. Installing Node.js..."
+                curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                apt-get install -y nodejs
+            else
+                echo "Node.js already installed:"
+                node -v
+            fi
+            ''' 
+
            withSonarQubeEnv('sonar-qube') {
                 sh '''$SONAR_HOME/bin/sonar-scanner \
                        -Dsonar.projectKey=myPETC \
