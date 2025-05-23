@@ -17,6 +17,8 @@ pipeline {
     }
 
     stage("CodeScanning"){
+
+    }
         environment {
            SONAR_HOME = tool name: 'sonar-scan'
         }
@@ -49,14 +51,14 @@ pipeline {
             }
        }
 
-    }
+    
     
     stage(Quality Gate){
-     steps {
-        timeout(time: 5, unit: 'MINUTES') {
+        steps {
+            timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
-     }
+        }
 
     }
   }
