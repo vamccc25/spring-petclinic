@@ -30,6 +30,7 @@ pipeline {
                        -Dsonar.java.binaries=target/classes \
                        -Dsonar.exclusions=src/test/java/****/*.java \
                        -Dsonar.analysis.mode=publish \
+                       -Dsonar.exclusions=**/*.html \
                        -Dsonar.projectVersion=${BUILD_NUMBER}
                 
                 '''
