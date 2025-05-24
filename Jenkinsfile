@@ -1,6 +1,11 @@
 pipeline {
      
   agent any 
+  environment {
+           SONAR_HOME = tool name: 'sonar-scan'
+        }
+
+
 
   stages { 
 
@@ -17,9 +22,7 @@ pipeline {
     }
 
     stage("CodeScanning"){
-         environment {
-           SONAR_HOME = tool name: 'sonar-scan'
-        }
+        
         steps {    
 
            withSonarQubeEnv('sonar-qube') {
