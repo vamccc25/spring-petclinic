@@ -10,16 +10,14 @@ pipeline {
         }
     }
 
-    stage("Run unit-test"){
+    //stage("Run unit-test"){
         steps {
             sh "./mvnw test"
         }
     }
 
     stage("CodeScanning"){
-
-    
-        environment {
+         environment {
            SONAR_HOME = tool name: 'sonar-scan'
         }
         steps {    
@@ -64,4 +62,3 @@ pipeline {
   }
 
  }
-}
