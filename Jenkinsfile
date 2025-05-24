@@ -5,8 +5,6 @@ pipeline {
            SONAR_HOME = tool name: 'sonar-scan'
         }
 
-
-
   stages { 
 
     stage("Build"){
@@ -40,7 +38,7 @@ pipeline {
             }
        }
 
-    
+    }
     
     stage('Quality Gate'){
         steps {
@@ -53,4 +51,3 @@ pipeline {
   }
 
  }
-}
