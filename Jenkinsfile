@@ -10,7 +10,7 @@ pipeline {
         }
     }
 
-    //stage("Run unit-test"){
+    stage("Run unit-test"){
         steps {
             sh "./mvnw test"
         }
@@ -22,7 +22,7 @@ pipeline {
         }
         steps {    
 
-           // Install Node.js only if not already installed
+            Install Node.js only if not already installed
             sh '''
             if ! command -v node >/dev/null 2>&1; then
                 echo "Node.js not found. Installing Node.js..."
